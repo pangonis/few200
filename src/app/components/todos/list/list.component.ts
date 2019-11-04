@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TodoItem } from '../Models';
+import { TodoDataService } from 'src/app/services/todo-data.service';
 
 @Component({
   selector: 'app-list',
@@ -9,12 +10,12 @@ import { TodoItem } from '../Models';
 export class ListComponent implements OnInit {
 
   @Input() items: TodoItem[] = [];
-  constructor() { }
+  constructor(private service: TodoDataService) { }
 
   ngOnInit() {
   }
 
   markComplete(item: TodoItem) {
-    item.completed = true;
+    this.service.markComplete(item);
   }
 }
