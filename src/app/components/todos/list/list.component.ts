@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodoItem } from '../Models';
 
 @Component({
@@ -8,14 +8,13 @@ import { TodoItem } from '../Models';
 })
 export class ListComponent implements OnInit {
 
-  items: TodoItem[] = [
-    { id: '1', description: 'Take down halloween decorations', completed: false },
-    { id: '2', description: 'Rake Leaves', completed: true }
-  ];
-
+  @Input() items: TodoItem[] = [];
   constructor() { }
 
   ngOnInit() {
   }
 
+  markComplete(item: TodoItem) {
+    item.completed = true;
+  }
 }
